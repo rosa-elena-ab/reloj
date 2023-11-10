@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body {
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+            display:grid;
+            background: black;
+            place-items: center;
+        }
+        #reloj{
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            width: 800px;
+            height: 200px;
+            color:aliceblue;
+            font-size:4rem;
+        }
+    </style>
+    <div id="reloj"></div>
+    <script>
+        temporizador=setTimeout("reloj()",1000);
+        function reloj(){
+            let tiempo= new Date();
+            let hora= tiempo.getHours();
+            let minutos=tiempo.getMinutes();
+            let segundos=tiempo.getSeconds();
+            let fecha=tiempo.toDateString();
+            
+
+            let hours=new String(hora);
+            if(hours.length==1){
+                hours= "0"+ hours;
+            }
+            let minutes=new String(minutos);
+            if(minutes.length==1){
+                minutes= "0"+ minutes;
+            }
+            let seconds=new String(segundos);
+            if(seconds.length==1){
+                seconds= "0"+ seconds;
+            }
+            formato= fecha + " "+hours + ":"+ minutes+":"+seconds;
+            document.getElementById("reloj").innerHTML=formato;
+            temporizador=setTimeout("reloj()",1000);
+        }
+    </script>
+</body>
+</html>
